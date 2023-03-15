@@ -33,10 +33,13 @@ module "enterprise_scale" {
   }
 
   root_parent_id = data.azurerm_client_config.core.tenant_id
-  root_id        = "con"
-  root_name      = "Contoso"
+  root_id        = var.root_id
+  root_name      = var.root_name
 
   deploy_corp_landing_zones = true
   deploy_online_landing_zones = true
-
+  
+  deploy_connectivity_resources    = var.deploy_connectivity_resources
+  subscription_id_connectivity     = data.azurerm_client_config.core.subscription_id
+  configure_connectivity_resources = local.configure_connectivity_resources
 }
