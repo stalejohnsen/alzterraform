@@ -36,4 +36,7 @@ module "enterprise_scale" {
   root_id        = "con"
   root_name      = "Contoso"
 
+  deploy_corp_landing_zones = true
+  deploy_online_landing_zones = true
+
 }
