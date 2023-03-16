@@ -1,19 +1,6 @@
 # We strongly recommend using the required_providers block to set the
 # Azure Provider source and version being used.
 
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "= 3.35.0"
-    }
-  }
-}
-
-provider "azurerm" {
-  features {}
-}
-
 # You can use the azurerm_client_config data resource to dynamically
 # extract connection settings from the provider configuration.
 
@@ -39,7 +26,13 @@ module "enterprise_scale" {
   deploy_corp_landing_zones = true
   deploy_online_landing_zones = true
   
+  # connectivity resources 
   deploy_connectivity_resources    = var.deploy_connectivity_resources
   subscription_id_connectivity     = data.azurerm_client_config.core.subscription_id
   configure_connectivity_resources = local.configure_connectivity_resources
+
+  # management resources
+  deploy_management_resources = var.deploy_management_resources
+  subscription_id_management = data.azurerm_client_config.core.subscription_id
+  configure_management_resources = local.configure_connectivity_resources
 }
