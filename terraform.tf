@@ -10,6 +10,8 @@ terraform {
         storage_account_name = "tfstate12372"
         container_name       = "tfstate"
         key                  = "terraform.tfstate"
+        use_azuread_auth     = true
+        # Environment variable for subscription id and tenant id
     }
 }
 
