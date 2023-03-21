@@ -12,7 +12,7 @@ terraform {
         key                  = "terraform.tfstate"
         use_azuread_auth     = true
         # Environment variable for subscription id and tenant id
-    }
+  }
 }
 
 provider "azurerm" {
